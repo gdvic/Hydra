@@ -47,4 +47,5 @@ Manage your system with tool
 - /speech [hi]  to speech tts.💬
 
 - /shutdown  🙅
-
+  
+- /kill to termiante the cuurently activated session. 
