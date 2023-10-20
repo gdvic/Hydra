@@ -44,7 +44,6 @@ Manage your system with tool
 
 - /shell for pro.🖬
 
-
 - /speech [hi]  to speech tts.💬
 
 - /shutdown  🙅
